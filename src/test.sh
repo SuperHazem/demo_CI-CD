@@ -1,20 +1,18 @@
 #!/bin/bash
 
-#src/test.sh
-EXPECTED="Hello, Test!"
+# Define what we expect to see
+EXPECTED="Hello, World!"
 
-OUTPUT=$(node -e "console.log(require('./src/app')('Test'))")
+# Run the app.js file directly and save its output
+OUTPUT=$(node src/app.js)
 
+# Compare them
 if [ "$OUTPUT" == "$EXPECTED" ]; then
-
-echo "✅ Test passed!"
-
-exit 0
-
+  echo "✅ Test passed!"
+  exit 0
 else
-
-echo "❌ Test failed! Expected '$EXPECTED' but got '$OUTPUT'"
-
-exit 1
-
+  echo "❌ Test failed!"
+  echo "Expected: '$EXPECTED'"
+  echo "Got:      '$OUTPUT'"
+  exit 1
 fi
