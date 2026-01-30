@@ -1,9 +1,14 @@
-function greet () {
-    return 'hello, ${name}!';
+function greet(name) {
+
+  return `Hello, ${name}!`;
+
 }
 
-module.exports = greet;
+module.exports = greet; // Ensure function is exportable
+// If run directly, print output (useful for debugging)
 
 if (require.main === module) {
-    console.log(greet("wolrd"));
+
+  console.log(greet("World"));
+
 }
