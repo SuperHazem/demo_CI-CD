@@ -1,18 +1,13 @@
 #!/bin/bash
 
-# Define what we expect to see
-EXPECTED="Hello, World!"
+# We ask the app to add 5 and 5
+OUTPUT=$(node src/app.js 5 5)
+EXPECTED="10"
 
-# Run the app.js file directly and save its output
-OUTPUT=$(node src/app.js)
-
-# Compare them
 if [ "$OUTPUT" == "$EXPECTED" ]; then
-  echo "✅ Test passed!"
+  echo "✅ Math works! 5+5=$OUTPUT"
   exit 0
 else
-  echo "❌ Test failed!"
-  echo "Expected: '$EXPECTED'"
-  echo "Got:      '$OUTPUT'"
+  echo "❌ Math failed. Expected $EXPECTED but got $OUTPUT"
   exit 1
 fi

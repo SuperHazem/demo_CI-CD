@@ -1,24 +1,30 @@
-on:
+name: CI/CD Pipeline
+
+on: 
     push:
-        branches:
-            - main
-            - test
-    
+        branches: 
+        - main
+        - test
     
     pull_request:
         branches:
-            - main
-
+        - main
+        - test
+       
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - name: check 
-          uses: actions/checkout@v6.0.2
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6.0.2
 
-        - name: run tests
-          run: npm run test
+      - name: Run Test Script
+        run: bash src/test.sh
 
-        
-        
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test  # <--- THE MAGIC LINE!
+    steps:
+      - name: Simulate Deployment
+        run: echo "🚀 Tests passed! Deploying application to production server..."
