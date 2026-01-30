@@ -8,6 +8,6 @@ const num1 = parseInt(args[0]);
 const num2 = parseInt(args[1]);
 
 // Calculate and print the sum
-const sum = num1 - num2;
+const sum = num1 + num2;
 console.log(sum);
 
